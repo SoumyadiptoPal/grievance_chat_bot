@@ -15,13 +15,13 @@ const firebaseConfig = {
   storageBucket: "grievance-bot-india.appspot.com",
   messagingSenderId: "613050905972",
   appId: "1:613050905972:web:45b91d756f40e2add86821",
-  measurementId: "G-YHVVJ6KCJE"
+  measurementId: "G-YHVVJ6KCJE",
 };
 
 // Initialize Firebase
 const firebase = initializeApp(firebaseConfig);
 const db = getFirestore(firebase);
-const auth=getAuth(firebase);
+const auth = getAuth(firebase);
 const storage = getStorage(firebase);
 
-export {firebase,db,auth,storage};
+export { firebase, db, auth, storage };

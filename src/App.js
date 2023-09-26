@@ -1,15 +1,15 @@
-import './App.css';
-import Home from './components/Home';
-import Navbar from './components/Navbar';
-import State from './context/State';
+import "./App.css";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import State from "./context/State";
 
 function App() {
   return (
     <State>
-    <div>
-    <Navbar/>
-      <Home/>
-    </div>
+      <div>
+        <Navbar />
+        <Home />
+      </div>
     </State>
   );
 }
