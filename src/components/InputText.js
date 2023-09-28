@@ -52,9 +52,10 @@ const InputText = ({ chat, setChat,flag }) => {
   };
 
   const handleSend = async () => {
+    
     const object = {
       sender: "User",
-      text: text,
+      text: (text)?text:" ",
       url: url,
     };
     resetTranscript();

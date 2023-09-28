@@ -131,7 +131,7 @@ const MessageItem = ({ item }) => {
           {item.url.map((item) => (
             <div>
               <a href={item} target="_blank" rel="noopener noreferrer">
-                <img src={item} />
+                <img src={item} width="200px"/>
               </a>
             </div>
           ))}

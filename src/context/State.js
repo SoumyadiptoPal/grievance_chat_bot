@@ -65,7 +65,7 @@ const State = (props) => {
       createdAt: serverTimestamp(),
     });
     // console.log(upload);
-    getDoc(upload)
+    await getDoc(upload)
       .then((doc) => {
         if (doc.exists()) {
           // Document found, you can access its data
@@ -91,6 +91,7 @@ const State = (props) => {
       });
     } catch (error) {
       alert("There has been an error!! Plese try again");
+      console.log(error);
     }
   };
   const updateChat = async (messages) => {
@@ -159,7 +160,11 @@ const State = (props) => {
     }
     else if(code==3)
     {
-      if(object.text.toLowerCase().includes('n'))// for multilingual support add "no/yes" in different languages
+      if(object.text==="cancel")
+      {
+        setCode(6);
+      }
+      else if(object.text.toLowerCase().includes('n'))// for multilingual support add "no/yes" in different languages
       {
         setCode(4);
         const object = {
@@ -167,17 +172,15 @@ const State = (props) => {
           text: "No",
         };
         setBuffer((prevChat) => [...prevChat, object]);
-        await uploadChat(buffer);
+        console.log([...buffer,object]);
+        await uploadChat([...buffer,object]);
       }
-      else if(object.text.toLowerCase().includes('y'))
+      else
       {
         setCode(5);
         replyQuestion2();
       }
-      else if(object.text==="cancel")
-      {
-        setCode(6);
-      }
+      
     }
     else if(code==5)
     {
@@ -192,7 +195,7 @@ const State = (props) => {
     }
   }
   const askQuestion1=async(complain)=>{
-    const text=`Legitimate complain: <Yes/No>
+    const text=`Legitimate complaint: <Yes/No>
     Department: <Department Name>
     Subgroup: <Group Name>
     Summary: <Only the important details>
@@ -264,7 +267,7 @@ const State = (props) => {
     // reply=reply.replace(/ {2,}/g, ' ');
     console.log(reply);
 
-    let match=reply.match(/Legitimate\scomplain:\s*(.*?)\n+/);
+    let match=reply.match(/Legitimate\scomplaint:\s*(.*?)\n+/);
     console.log(match);
     const complainValue=(match)?match[1]:"No";
     match=reply.match(/Department:\s(.*?)\n+/);
@@ -308,7 +311,7 @@ const State = (props) => {
 
     The following documents were uploaded.\n Do you want to add anything else? 
     Please enter yes/no.`
-
+    setSummary(summary+object1.text);
     let url=[];
     buffer.forEach((obj) => {
       if (obj.url && Array.isArray(obj.url) && obj.sender==="User") {
