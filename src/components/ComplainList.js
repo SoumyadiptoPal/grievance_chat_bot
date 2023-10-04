@@ -3,30 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import Context from "../context/Context";
 import translations from "../data/translatedText";
 const ComplainList = () => {
-  // const data=[{
-  //     id: 1234567,
-  //     status:'approved',
-  //     messages:[{
-  //         sender: "User",
-  //         text:"Hello how are you? I am fine"
-  //     },
-  //     {
-  //         sender: "Bot",
-  //         text:"I am also Fine. How's your family?"
-  //     }]
-  // },
-  // {
-  //     id: 1234568,
-  //     status:'approved',
-  //     messages:[{
-  //         sender: "User",
-  //         text:"Hello how are you? I am fine"
-  //     },
-  //     {
-  //         sender: "Bot",
-  //         text:"I am also Fine. How's your family?"
-  //     }]
-  // }]
   const context = useContext(Context);
   const { selectedChat, setSelectedChat, setBuffer, chats,setCode,language} = context;
   const [search, setSearch] = useState("");
