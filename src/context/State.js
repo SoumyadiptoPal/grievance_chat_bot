@@ -60,6 +60,9 @@ const State = (props) => {
    
     const upload = await addDoc(collection(db, "chats"), {
       customer_id: 12345678,
+      department: department,
+      subgroup: subGroup,
+      summary: summary,
       status: "Complaint Submitted",
       messages: messages,
       createdAt: serverTimestamp(),
