@@ -29,7 +29,6 @@ import("bard-ai")
       // Perform operations
       const { text } = req.body;
       message = await askBard(text);
-      console.log(COOKIE);
       const data = { message: message };
       res.json(data);
     });
