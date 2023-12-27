@@ -8,15 +8,7 @@ import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyATrtUc3gKjr6Q0i4W8rgx_41YX-N-dmBo",
-  authDomain: "grievance-bot-india.firebaseapp.com",
-  projectId: "grievance-bot-india",
-  storageBucket: "grievance-bot-india.appspot.com",
-  messagingSenderId: "613050905972",
-  appId: "1:613050905972:web:45b91d756f40e2add86821",
-  measurementId: "G-YHVVJ6KCJE",
-};
+const firebaseConfig = JSON.parse(process.env.REACT_APP_FIREBASE_TOKEN);
 
 // Initialize Firebase
 const firebase = initializeApp(firebaseConfig);
